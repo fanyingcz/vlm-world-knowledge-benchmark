@@ -1,0 +1,91 @@
+{
+  "analysis_type": "cross-subject",
+  "generated_at": "2026-05-15 19:30:33",
+  "result": {
+    "mode": "cross-subject",
+    "model": "Gemini",
+    "total": 7808,
+    "overall_accuracy": 76.09,
+    "overall_weighted_acc": 0.7589,
+    "type_accuracy": [
+      {
+        "type": "简答题",
+        "total": 2572,
+        "correct": 1981,
+        "accuracy": 77.02
+      },
+      {
+        "type": "选择题",
+        "total": 2620,
+        "correct": 1885,
+        "accuracy": 71.95
+      },
+      {
+        "type": "判断题",
+        "total": 2616,
+        "correct": 2075,
+        "accuracy": 79.32
+      }
+    ],
+    "mode_performance": [
+      {
+        "test_mode": 1,
+        "total_questions": 1952,
+        "correct_count": 1401,
+        "accuracy_percent": 71.77,
+        "weighted_acc": 0.7044
+      },
+      {
+        "test_mode": 2,
+        "total_questions": 1952,
+        "correct_count": 1477,
+        "accuracy_percent": 75.67,
+        "weighted_acc": 0.7597
+      },
+      {
+        "test_mode": 3,
+        "total_questions": 1952,
+        "correct_count": 1630,
+        "accuracy_percent": 83.5,
+        "weighted_acc": 0.8417
+      },
+      {
+        "test_mode": 4,
+        "total_questions": 1952,
+        "correct_count": 1433,
+        "accuracy_percent": 73.41,
+        "weighted_acc": 0.7297
+      }
+    ],
+    "subject_performance": [
+      {
+        "subject": "biology",
+        "total_questions": 2320,
+        "correct_count": 1702,
+        "accuracy_percent": 73.36,
+        "weighted_acc": 0.7292
+      },
+      {
+        "subject": "chemical",
+        "total_questions": 1608,
+        "correct_count": 1311,
+        "accuracy_percent": 81.53,
+        "weighted_acc": 0.815
+      },
+      {
+        "subject": "physics",
+        "total_questions": 3120,
+        "correct_count": 2349,
+        "accuracy_percent": 75.29,
+        "weighted_acc": 0.745
+      },
+      {
+        "subject": "safety",
+        "total_questions": 760,
+        "correct_count": 579,
+        "accuracy_percent": 76.18,
+        "weighted_acc": 0.7868
+      }
+    ]
+  }
+}
