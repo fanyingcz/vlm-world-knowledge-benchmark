@@ -317,6 +317,17 @@ requires no code changes.
 
 - 95 units is small by benchmark standards; the design prioritises depth of
   counterfactual variation over breadth.
+- **One unit has a known labelling defect.** In `data/生物.json` (the 共生 /
+  symbiosis unit), one counterfactual variant was never written, so the
+  `question_type` list — which is generated in repeating 简答 / 选择 / 判断 order —
+  is out of alignment from that point on. Five questions in that unit are
+  therefore scored against the wrong rubric (a multiple-choice item graded as
+  open-ended, and so on). This affects **15 of 1,952 pairs per condition
+  (0.77%)**, and because the defect is identical across all four conditions and
+  all three models it **does not affect any comparative result** — only absolute
+  accuracy, and then only by roughly half a point. Fixing it means re-running the
+  full evaluation, so it is documented here rather than silently patched; the
+  shipped `results/*.json` were produced from the data exactly as committed.
 - Open-ended answers are scored by an LLM judge, which inherits the judge's own
   biases despite rubric anchoring.
 - Models were accessed via third-party OpenAI-compatible gateways, so results
