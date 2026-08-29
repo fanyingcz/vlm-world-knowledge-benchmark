@@ -339,8 +339,9 @@ requires no code changes.
 
 ## Author
 
-**袁承烨 (Chengye Yuan)** — M.Sc. in Artificial Intelligence, HKUST.
-B.Sc. in Computer Science.
+**袁承烨 (Chengye Yuan)** — M.Sc. in Artificial Intelligence, HKUST (2026–).
+B.Sc. in Computer Science, East China University of Science and Technology
+(华东理工大学), 2026.
 
 This work was my B.Sc. graduation thesis and received the Outstanding
 Undergraduate Thesis award.
