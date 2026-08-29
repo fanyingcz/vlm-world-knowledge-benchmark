@@ -111,6 +111,23 @@ no credentials in source.
 | **Doubao** | **72.44%** | 66.85 | 75.72 | **81.10** | 66.09 |
 | **Qwen** | **59.75%** | 51.08 | 65.68 | **70.90** | 51.33 |
 
+![Accuracy by prompting condition](results/fig_accuracy_by_mode.png)
+
+<details>
+<summary>Reading the figure</summary>
+
+The blue band (mode 2) and the red band (mode 4) are the two conditions this
+project is built around. They are **identical in every respect except relevance**:
+same injected-knowledge format, same length, same position in the prompt. Mode 2
+lifts every model; mode 4 does essentially nothing. That difference is the causal
+effect of the knowledge itself, separated from generic few-shot priming — the
+thing a naive "add knowledge to the prompt" experiment cannot isolate.
+
+Mode 3 (chain-of-thought guidance) is the strongest single lever, and it helps
+the weakest model most: Qwen gains +19.8 points while Gemini gains +11.7.
+
+</details>
+
 ### Gain over baseline
 
 | Model | Mode 2<br>(relevant knowledge) | Mode 3<br>(CoT) | Mode 4<br>(irrelevant knowledge) |
@@ -118,6 +135,13 @@ no credentials in source.
 | Gemini | +3.90 | **+11.73** | +1.64 |
 | Doubao | +8.87 | **+14.25** | −0.76 |
 | Qwen | +14.60 | **+19.82** | +0.25 |
+
+![Gain over baseline](results/fig_gain_over_baseline.png)
+
+The control condition is the point of this panel. Two of three models actually
+move *slightly backwards* or flat when the injected knowledge is irrelevant
+(Doubao −0.76, Qwen +0.25) — so the mode 2 gains are not simply "more text in the
+prompt helps".
 
 ### By subject
 
@@ -253,9 +277,21 @@ cd evaluation-frontend && npm install && npm run serve   # frontend
 │   └── images/README.md        # image layout + how to supply them
 ├── results/
 │   ├── cross_model_biology_20260614_105410.json
-│   └── cross_subject_{Doubao,Gemini,Qwen}.json
+│   ├── cross_subject_{Doubao,Gemini,Qwen}.json
+│   ├── fig_accuracy_by_mode.png          # figure 1, generated
+│   └── fig_gain_over_baseline.png        # figure 2, generated
+├── scripts/
+│   └── make_figures.py       # regenerates both figures from results/*.json
 ├── requirements.txt
 └── .env.example
+```
+
+The two figures are rendered from `results/*.json` rather than hand-drawn, so
+they never drift from the data:
+
+```bash
+pip install matplotlib
+python scripts/make_figures.py
 ```
 
 ---
@@ -263,13 +299,17 @@ cd evaluation-frontend && npm install && npm run serve   # frontend
 ## Images are not included
 
 The 329 images were collected from publicly available educational sources, so
-they are **not redistributed here**. This keeps the repository small and avoids
-licensing questions the author cannot answer on the sources' behalf.
+they are **not redistributed here**. Publicly *accessible* and licensed for
+*redistribution* are different things, and the licensing question is one the
+author cannot answer on the sources' behalf. Keeping them out also holds the
+repository at ~1.5 MB.
 
 The questions — including the counterfactual variants, reference answers,
 knowledge points and COT scaffolds — are fully included and are the substantive
 contribution. See [`data/images/README.md`](data/images/README.md) for the
-expected layout and how to point the app at your own copy.
+expected layout and how to point the app at your own copy. Dropping an image set
+you hold rights to into `data/images/` (or pointing `VLM_BENCH_IMAGE_DIR` at it)
+requires no code changes.
 
 ---
 
